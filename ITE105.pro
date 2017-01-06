@@ -13,11 +13,14 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        logindialog.cpp
+        logindialog.cpp \
+    mainwindow.cpp
 
-HEADERS  += logindialog.h
+HEADERS  += logindialog.h \
+    mainwindow.h
 
-FORMS    += logindialog.ui
+FORMS    += logindialog.ui \
+    mainwindow.ui
 
 DISTFILES += \
     LoginBG.jpg

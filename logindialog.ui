@@ -29,27 +29,27 @@ border-image:url();
        <set>Qt::AlignCenter</set>
       </property>
       <item row="2" column="0">
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="label_username">
         <property name="text">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;用户名&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QLineEdit" name="lineEdit"/>
+       <widget class="QLineEdit" name="lineEdit_username"/>
       </item>
       <item row="5" column="0">
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="label_password">
         <property name="text">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;密码&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </item>
       <item row="5" column="1">
-       <widget class="QLineEdit" name="lineEdit_2"/>
+       <widget class="QLineEdit" name="lineEdit_password"/>
       </item>
       <item row="6" column="1">
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="button_Login">
         <property name="text">
          <string>登录</string>
         </property>
@@ -59,7 +59,7 @@ border-image:url();
     </widget>
    </item>
    <item row="0" column="0">
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="label_title">
      <property name="font">
       <font>
        <family>Heiti SC</family>
