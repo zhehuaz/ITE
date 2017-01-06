@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QMenu>
 #include <QMenuBar>
+#include <QShortcut>
 
 class MainWindow : public QMainWindow
 {
@@ -38,10 +39,22 @@ private:
     QAction *reportView;
     QAction *statusView;
     QAction *scriptView;
+
     QAction *messageView;
+    QMenu *messageViewSubMenu;
+    QAction *sysConsole;
+    QAction *sysConsoleError;
+    QAction *sysConsoleWarning;
+    QAction *testConsoleError;
+    QAction *testConsoleWarning;
+
     QAction *toolBar;
     QAction *statusBar;
     QAction *fileDirectory;
+    QMenu *fileDirectorySubMenu;
+    QActionGroup *fileDirectoryGroup;
+    QAction *absolutePath;
+    QAction *relativePath;
     QAction *saveView;
     QAction *loadView;
     QAction *font;
@@ -60,6 +73,7 @@ private:
     QMenu *windowMenu;
     QAction *windowClose;
     QAction *windowMinimize;
+    QActionGroup *layoutActionGroup;
     QAction *layoutHorizontal;
     QAction *layoutVertical;
 
