@@ -14,13 +14,16 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         logindialog.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    newprojectdialog.cpp
 
 HEADERS  += logindialog.h \
-    mainwindow.h
+    mainwindow.h \
+    newprojectdialog.h
 
 FORMS    += logindialog.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    newprojectdialog.ui
 
 DISTFILES +=
 
