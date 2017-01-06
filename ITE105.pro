@@ -22,5 +22,7 @@ HEADERS  += logindialog.h \
 FORMS    += logindialog.ui \
     mainwindow.ui
 
-DISTFILES += \
-    LoginBG.jpg
+DISTFILES +=
+
+RESOURCES += \
+    login_bg.qrc
