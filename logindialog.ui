@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">#LoginDialog { 
-border-image: url(./LoginBG.jpg); 
+border-image: url(:/bg/LoginBG.jpg); 
 } 
 #LoginDialog * { 
 border-image:url(); 
