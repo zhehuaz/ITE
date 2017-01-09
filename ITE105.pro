@@ -13,21 +13,15 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        logindialog.cpp \
+    logindialog.cpp \
     mainwindow.cpp \
-<<<<<<< HEAD
-    treeview.cpp
-
-HEADERS  += logindialog.h \
-    mainwindow.h \
-    treeview.h
-=======
+    treeview.cpp \
     newprojectdialog.cpp
 
 HEADERS  += logindialog.h \
     mainwindow.h \
-    newprojectdialog.h
->>>>>>> 0258d79c0005aafabc61e51e66c921e4dfaa54b4
+    newprojectdialog.h \
+    treeview.h
 
 FORMS    += logindialog.ui \
     mainwindow.ui \
