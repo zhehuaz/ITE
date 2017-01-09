@@ -4,7 +4,11 @@
 #include <QMainWindow>
 #include <QMenu>
 #include <QMenuBar>
-#include <QShortcut>
+#include <QLayout>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QLabel>
+#include "treeview.h"
 
 class MainWindow : public QMainWindow
 {
@@ -15,8 +19,11 @@ public:
     ~MainWindow();
 
 private:
+    void createLayout();
     void createMenu();
     void createAction();
+
+    void createFileTree(TreeView *treeview);
 
     QMenu *fileMenu;
     QAction *fileNew;

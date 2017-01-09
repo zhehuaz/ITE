@@ -13,13 +13,14 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        logindialog.cpp \
+    logindialog.cpp \
     mainwindow.cpp \
     newprojectdialog.cpp \
     newprojectwelcomwidget.cpp \
     newprojectpathwidget.cpp \
     newprojectvcwidget.cpp \
-    newprojectmemberwidget.cpp
+    newprojectmemberwidget.cpp \
+    treeview.cpp
 
 HEADERS  += logindialog.h \
     mainwindow.h \
@@ -27,7 +28,8 @@ HEADERS  += logindialog.h \
     newprojectwelcomwidget.h \
     newprojectpathwidget.h \
     newprojectvcwidget.h \
-    newprojectmemberwidget.h
+    newprojectmemberwidget.h \
+    treeview.h
 
 FORMS    += logindialog.ui \
     mainwindow.ui \
