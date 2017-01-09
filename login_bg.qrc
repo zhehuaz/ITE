@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/bg">
         <file>LoginBG.jpg</file>
+        <file>icon_file.png</file>
+        <file>icon_folder.png</file>
+        <file>icon_project.png</file>
     </qresource>
 </RCC>

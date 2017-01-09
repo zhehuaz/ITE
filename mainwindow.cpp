@@ -3,13 +3,76 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent)
 {
-    //setGeometry(100, 100, 800, 600);
+    setWindowTitle(tr("软件产品质量保证应用平台"));
+    setGeometry(100, 100, 800, 600);
+    createLayout();
     createAction();
     createMenu();
 }
 
 MainWindow::~MainWindow()
 {
+    delete fileMenu;
+    delete fileNew;
+    delete fileOpen;
+    delete fileClose;
+    delete fileSave;
+    delete fileSaveAs;
+
+    delete editMenu;
+    delete undo;
+    delete redo;
+    delete cut;
+    delete copy;
+    delete paste;
+    delete search;
+
+    delete viewMenu;
+    delete projectView;
+    delete processView;
+    delete reportView;
+    delete statusView;
+    delete scriptView;
+
+    delete messageView;
+    delete messageViewSubMenu;
+    delete sysConsole;
+    delete sysConsoleError;
+    delete sysConsoleWarning;
+    delete testConsoleError;
+    delete testConsoleWarning;
+
+    delete toolBar;
+    delete statusBar;
+    delete fileDirectory;
+    delete fileDirectorySubMenu;
+    delete fileDirectoryGroup;
+    delete absolutePath;
+    delete relativePath;
+    delete saveView;
+    delete loadView;
+    delete font;
+
+    delete projectMenu;
+    delete projectNew;
+    delete projectOpen;
+    delete projectClose;
+    delete projectSave;
+    delete projectQuit;
+    delete projectRecent;
+    delete projectClean;
+    delete versionControl;
+    delete projectProperty;
+
+    delete windowMenu;
+    delete windowClose;
+    delete windowMinimize;
+    delete layoutActionGroup;
+    delete layoutHorizontal;
+    delete layoutVertical;
+
+    delete helpMenu;
+    delete about;
 }
 
 void MainWindow::createMenu()
@@ -162,4 +225,139 @@ void MainWindow::createAction()
     layoutActionGroup->setExclusive(true);
 
     about = new QAction(tr("关于"),this);
+}
+
+void MainWindow::createLayout()
+{
+    QVBoxLayout *mainLayout = new QVBoxLayout;
+    QHBoxLayout *upLayout = new QHBoxLayout;
+    QVBoxLayout *viewLayout = new QVBoxLayout;
+    QVBoxLayout *showLayout = new QVBoxLayout;
+    QVBoxLayout *msgLayout = new QVBoxLayout;
+    QTabWidget *viewTab = new QTabWidget;
+    QTabWidget *showTab = new QTabWidget;
+    QTabWidget *msgTab = new QTabWidget;
+
+    QWidget *fileWidget = new QWidget;
+    QWidget *reportWidget = new QWidget;
+    QWidget *taskWidget = new QWidget;
+    viewTab->addTab(fileWidget, tr("解决方案"));
+    viewTab->addTab(reportWidget, tr("报表数据"));
+    viewTab->addTab(taskWidget, tr("执行任务列表"));
+    viewTab->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
+    viewTab->setMaximumWidth(280);
+    viewLayout->addWidget(viewTab);
+
+    TreeView *fileTreeView = new TreeView;
+    createFileTree(fileTreeView);
+
+    QVBoxLayout *fileTreeLayout = new QVBoxLayout;
+    fileWidget->setLayout(fileTreeLayout);
+    fileTreeLayout->addWidget(fileTreeView);
+
+
+    QWidget *sysCnsErrWidget = new QWidget;
+    QWidget *sysCnsWrnWidget = new QWidget;
+    QWidget *tstCnsErrWidget = new QWidget;
+    QWidget *tstCnsWrnWidget = new QWidget;
+    msgTab->addTab(sysCnsErrWidget, tr("系统控制台错误"));
+    msgTab->addTab(sysCnsWrnWidget, tr("系统控制台警告"));
+    msgTab->addTab(tstCnsErrWidget, tr("测试控制台错误"));
+    msgTab->addTab(tstCnsWrnWidget, tr("测试控制台警告"));
+    msgTab->setFixedHeight(150);
+    msgLayout->addWidget(msgTab);
+
+    QWidget *showWidget = new QWidget;
+    showWidget->setFixedWidth(500);
+    showLayout->addWidget(showWidget);
+
+    upLayout->addLayout(viewLayout);
+    upLayout->addLayout(showLayout);
+    mainLayout->addLayout(upLayout);
+    mainLayout->addLayout(msgLayout);
+
+    QWidget *Mwidget = new QWidget(this);
+    Mwidget->setLayout(mainLayout);
+    this->setCentralWidget(Mwidget);
+}
+
+void MainWindow::createFileTree(TreeView *treeview)
+{
+    QStandardItemModel *model = new QStandardItemModel(treeview);
+    model->setHorizontalHeaderLabels(QStringList()<<QStringLiteral("名称"));
+    QStandardItem *itemProject = new QStandardItem(QStringLiteral("项目"));
+    itemProject->setIcon(QIcon(":/bg/icon_project"));
+    model->appendRow(itemProject);
+    //model->setItem(model->indexFromItem(itemProject).row(), 1, new QStandardItem(QStringLiteral("项目信息说明")));
+
+    QStandardItem *folder1 = new QStandardItem("规则检查文件夹");
+    folder1->setIcon(QIcon(":/bg/icon_folder"));
+    QStandardItem *folder2 = new QStandardItem("跨时钟域检查文件夹");
+    folder2->setIcon(QIcon(":/bg/icon_folder"));
+    QStandardItem *folder3 = new QStandardItem("功能时序仿真文件夹");
+    folder3->setIcon(QIcon(":/bg/icon_folder"));
+    QStandardItem *folder4 = new QStandardItem("静态时序分析文件夹");
+    folder4->setIcon(QIcon(":/bg/icon_folder"));
+    QStandardItem *folder5 = new QStandardItem("一致性文件夹");
+    folder5->setIcon(QIcon(":/bg/icon_folder"));
+
+    itemProject->appendRow(folder1);
+    itemProject->appendRow(folder2);
+    itemProject->appendRow(folder3);
+    itemProject->appendRow(folder4);
+    itemProject->appendRow(folder5);
+
+    QStandardItem *file1_1 = new QStandardItem("规则约束文件.rule");
+    folder1->appendRow(file1_1);
+    file1_1->setIcon(QIcon(":/bg/icon_file"));
+
+    QStandardItem *file2_1 = new QStandardItem("directive.tcl");
+    file2_1->setIcon(QIcon(":/bg/icon_file"));
+    QStandardItem *file2_2 = new QStandardItem("test.c");
+    file2_2->setIcon(QIcon(":/bg/icon_file"));
+    folder2->appendRow(file2_1);
+    folder2->appendRow(file2_2);
+
+    QStandardItem *folder3_1 = new QStandardItem("测试平台TB");
+    folder3_1->setIcon(QIcon(":/bg/icon_folder"));
+    QStandardItem *folder3_2 = new QStandardItem("验证vip");
+    folder3_2->setIcon(QIcon(":/bg/icon_folder"));
+    QStandardItem *folder3_3 = new QStandardItem("库文件LIB");
+    folder3_3->setIcon(QIcon(":/bg/icon_folder"));
+    QStandardItem *file3_3_1 = new QStandardItem("a.lib");
+    file3_3_1->setIcon(QIcon(":/bg/icon_file"));
+    QStandardItem *file3_3_2 = new QStandardItem("b.lib");
+    file3_3_2->setIcon(QIcon(":/bg/icon_file"));
+    QStandardItem *folder3_4 = new QStandardItem("测试用例TC");
+    folder3_4->setIcon(QIcon(":/bg/icon_folder"));
+    QStandardItem *file3_5 = new QStandardItem("工具配置文件.ini");
+    file3_5->setIcon(QIcon(":/bg/icon_file"));
+
+    folder3->appendRow(folder3_1);
+    folder3->appendRow(folder3_2);
+    folder3->appendRow(folder3_3);
+    folder3->appendRow(folder3_4);
+    folder3->appendRow(file3_5);
+    folder3_3->appendRow(file3_3_1);
+    folder3_3->appendRow(file3_3_2);
+
+    QStandardItem *folder4_1 = new QStandardItem("源文件SRC");
+    folder4_1->setIcon(QIcon(":/bg/icon_folder"));
+    QStandardItem *file4_2 = new QStandardItem("工具配置文件.ini");
+    file4_2->setIcon(QIcon(":/bg/icon_file"));
+
+    folder4->appendRow(folder4_1);
+    folder4->appendRow(file4_2);
+
+    QStandardItem *folder5_1 = new QStandardItem("源文件SRC");
+    folder5_1->setIcon(QIcon(":/bg/icon_folder"));
+    QStandardItem *file5_2 = new QStandardItem("工具配置文件.ini");
+    file5_2->setIcon(QIcon(":/bg/icon_file"));
+
+    folder5->appendRow(folder5_1);
+    folder5->appendRow(file5_2);
+
+    treeview->setModel(model);
+    //treeview->iterateOverItems();
+    //treeview->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
