@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QMenu>
 #include <QMenuBar>
+#include <QShortcut>
 
 class MainWindow : public QMainWindow
 {
@@ -18,8 +19,66 @@ private:
     void createAction();
 
     QMenu *fileMenu;
-    QAction *fileOpenAction;
-    QAction *fileCloseAction;
+    QAction *fileNew;
+    QAction *fileOpen;
+    QAction *fileClose;
+    QAction *fileSave;
+    QAction *fileSaveAs;
+
+    QMenu *editMenu;
+    QAction *undo;
+    QAction *redo;
+    QAction *cut;
+    QAction *copy;
+    QAction *paste;
+    QAction *search;
+
+    QMenu *viewMenu;
+    QAction *projectView;
+    QAction *processView;
+    QAction *reportView;
+    QAction *statusView;
+    QAction *scriptView;
+
+    QAction *messageView;
+    QMenu *messageViewSubMenu;
+    QAction *sysConsole;
+    QAction *sysConsoleError;
+    QAction *sysConsoleWarning;
+    QAction *testConsoleError;
+    QAction *testConsoleWarning;
+
+    QAction *toolBar;
+    QAction *statusBar;
+    QAction *fileDirectory;
+    QMenu *fileDirectorySubMenu;
+    QActionGroup *fileDirectoryGroup;
+    QAction *absolutePath;
+    QAction *relativePath;
+    QAction *saveView;
+    QAction *loadView;
+    QAction *font;
+
+    QMenu *projectMenu;
+    QAction *projectNew;
+    QAction *projectOpen;
+    QAction *projectClose;
+    QAction *projectSave;
+    QAction *projectQuit;
+    QAction *projectRecent;
+    QAction *projectClean;
+    QAction *versionControl;
+    QAction *projectProperty;
+
+    QMenu *windowMenu;
+    QAction *windowClose;
+    QAction *windowMinimize;
+    QActionGroup *layoutActionGroup;
+    QAction *layoutHorizontal;
+    QAction *layoutVertical;
+
+    QMenu *helpMenu;
+    QAction *about;
 };
 
 #endif // MAINWINDOW_H
