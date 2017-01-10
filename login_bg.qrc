@@ -4,5 +4,8 @@
         <file>icon_file.png</file>
         <file>icon_folder.png</file>
         <file>icon_project.png</file>
+        <file>icon_checked.png</file>
+        <file>icon_wrong.png</file>
+        <file>icon_unchecked.png</file>
     </qresource>
 </RCC>

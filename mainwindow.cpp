@@ -250,26 +250,194 @@ void MainWindow::createLayout()
 
     TreeView *fileTreeView = new TreeView;
     createFileTree(fileTreeView);
-
     QVBoxLayout *fileTreeLayout = new QVBoxLayout;
     fileWidget->setLayout(fileTreeLayout);
     fileTreeLayout->addWidget(fileTreeView);
 
+    TreeView *reportTreeView = new TreeView;
+    createReportFiletree(reportTreeView);
+    QVBoxLayout *reportTreeLayout = new QVBoxLayout;
+    reportWidget->setLayout(reportTreeLayout);
+    reportTreeLayout->addWidget(reportTreeView);
+
+    TreeView *taskTreeView = new TreeView;
+    createTaskFileTree(taskTreeView);
+    QVBoxLayout *taskTreeLayout = new QVBoxLayout;
+    taskWidget->setLayout(taskTreeLayout);
+    taskTreeLayout->addWidget(taskTreeView);
 
     QWidget *sysCnsErrWidget = new QWidget;
     QWidget *sysCnsWrnWidget = new QWidget;
     QWidget *tstCnsErrWidget = new QWidget;
     QWidget *tstCnsWrnWidget = new QWidget;
-    msgTab->addTab(sysCnsErrWidget, tr("系统控制台错误"));
+
+    QTextEdit *sysCnsTxt = new QTextEdit;
+    QString sysCnsString = " 1>-- 已启动生成：项目：Demo.prj 配置：d.ini --\n"
+                           " 1>加载规则约束文件...\n"
+                           " 1>加载测试用例TC...\n 1>正在编译...\n"
+                           " 1>正在编译..."
+                           " 1>Demo.prj - 0个错误， 0个警告"
+                           " ==== 运行：成功1个，失败0个 ====";
+    sysCnsTxt->setPlainText(sysCnsString);
+
+    msgTab->addTab(sysCnsTxt, tr("系统控制台错误"));
     msgTab->addTab(sysCnsWrnWidget, tr("系统控制台警告"));
     msgTab->addTab(tstCnsErrWidget, tr("测试控制台错误"));
     msgTab->addTab(tstCnsWrnWidget, tr("测试控制台警告"));
     msgTab->setFixedHeight(150);
     msgLayout->addWidget(msgTab);
 
+
     QWidget *showWidget = new QWidget;
     showWidget->setFixedWidth(500);
-    showLayout->addWidget(showWidget);
+
+    QTextEdit *showTxtEdit = new QTextEdit;
+    showTxtEdit->setEnabled(true);
+    showTab->addTab(showTxtEdit, tr("编辑"));
+    showLayout->addWidget(showTab);
+
+    QTableWidget *pjtPptTable = new QTableWidget(6,2);
+    pjtPptTable->horizontalHeader()->setStretchLastSection(true);
+    pjtPptTable->setSelectionBehavior(QAbstractItemView::SelectItems);
+    pjtPptTable->setEditTriggers(QAbstractItemView::DoubleClicked);
+
+    QTableWidgetItem *item0_0 = new QTableWidgetItem;
+    QTableWidgetItem *item0_1 = new QTableWidgetItem;
+    QTableWidgetItem *item1_0 = new QTableWidgetItem;
+    QTableWidgetItem *item1_1 = new QTableWidgetItem;
+    QTableWidgetItem *item2_0 = new QTableWidgetItem;
+    QTableWidgetItem *item2_1 = new QTableWidgetItem;
+    QTableWidgetItem *item3_0 = new QTableWidgetItem;
+    QTableWidgetItem *item3_1 = new QTableWidgetItem;
+    QTableWidgetItem *item4_0 = new QTableWidgetItem;
+    QTableWidgetItem *item4_1 = new QTableWidgetItem;
+    QTableWidgetItem *item5_0 = new QTableWidgetItem;
+    QTableWidgetItem *item5_1 = new QTableWidgetItem;
+
+    QStringList title;
+    title<<" "<<" ";
+    pjtPptTable->setHorizontalHeaderLabels(title);
+    title<<" "<<" "<<" "<<" ";
+    pjtPptTable->setVerticalHeaderLabels(title);
+
+    item0_0->setText("工程名称");
+    item0_0->setBackgroundColor(QColor(192, 192, 192));
+    item0_0->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    pjtPptTable->setItem(0,0,item0_0);
+    item0_1->setText(tr("Demo.prj"));
+    item0_1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    pjtPptTable->setItem(0,1,item0_1);
+    item1_0->setText(tr("被测软件"));
+    item1_0->setBackgroundColor(QColor(192, 192, 192));
+    item1_0->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    pjtPptTable->setItem(1,0,item1_0);
+    item1_1->setText(tr("XX"));
+    item1_1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    pjtPptTable->setItem(1,1,item1_1);
+    item2_0->setText(tr("芯片厂商"));
+    item2_0->setBackgroundColor(QColor(192, 192, 192));
+    item2_0->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    pjtPptTable->setItem(2,0,item2_0);
+    item2_1->setText(tr("Xilinx"));
+    item2_1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    pjtPptTable->setItem(2,1,item2_1);
+    item3_0->setText(tr("开发软件"));
+    item3_0->setBackgroundColor(QColor(192, 192, 192));
+    item3_0->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    pjtPptTable->setItem(3,0,item3_0);
+    item3_1->setText(tr("TestCode"));
+    item3_1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    pjtPptTable->setItem(3,1,item3_1);
+    item4_0->setText(tr("开发版本"));
+    item4_0->setBackgroundColor(QColor(192, 192, 192));
+    item4_0->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    pjtPptTable->setItem(4,0,item4_0);
+    item4_1->setText(tr("V1.0"));
+    item4_1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    pjtPptTable->setItem(4,1,item4_1);
+    item5_0->setText(tr("代码行数统计"));
+    item5_0->setBackgroundColor(QColor(192, 192, 192));
+    item5_0->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    pjtPptTable->setItem(5,0,item5_0);
+    item5_1->setText(tr("2141"));
+    item5_1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    pjtPptTable->setItem(5,1,item5_1);
+
+    showTab->addTab(pjtPptTable, tr("工程属性"));
+
+    QTableWidget *staticTestTable = new QTableWidget(4,4);
+    staticTestTable->horizontalHeader()->setStretchLastSection(true);
+    staticTestTable->setSelectionBehavior(QAbstractItemView::SelectItems);
+    staticTestTable->setEditTriggers(QAbstractItemView::DoubleClicked);
+
+    QStringList title2;
+    title2<<"测试类型"<<"执行结果"<<"测试通过"<<"备注";
+    staticTestTable->setHorizontalHeaderLabels(title2);
+    staticTestTable->setVerticalHeaderLabels(title);
+
+    QTableWidgetItem *stcItem0_0 = new QTableWidgetItem;
+    QTableWidgetItem *stcItem0_1 = new QTableWidgetItem;
+    QTableWidgetItem *stcItem0_2 = new QTableWidgetItem;
+    QTableWidgetItem *stcItem0_3 = new QTableWidgetItem;
+    QTableWidgetItem *stcItem1_0 = new QTableWidgetItem;
+    QTableWidgetItem *stcItem1_1 = new QTableWidgetItem;
+    QTableWidgetItem *stcItem1_2 = new QTableWidgetItem;
+    QTableWidgetItem *stcItem1_3 = new QTableWidgetItem;
+    QTableWidgetItem *stcItem2_0 = new QTableWidgetItem;
+    QTableWidgetItem *stcItem2_1 = new QTableWidgetItem;
+    QTableWidgetItem *stcItem2_2 = new QTableWidgetItem;
+    QTableWidgetItem *stcItem2_3 = new QTableWidgetItem;
+    QTableWidgetItem *stcItem3_0 = new QTableWidgetItem;
+    QTableWidgetItem *stcItem3_1 = new QTableWidgetItem;
+    QTableWidgetItem *stcItem3_2 = new QTableWidgetItem;
+    QTableWidgetItem *stcItem3_3 = new QTableWidgetItem;
+
+    stcItem0_0->setText(tr("规则检查"));
+    stcItem0_0->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    staticTestTable->setItem(0,0,stcItem0_0);
+    stcItem1_0->setText(tr("静态时序分析"));
+    stcItem1_0->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    staticTestTable->setItem(1,0,stcItem1_0);
+    stcItem2_0->setText(tr("跨时钟域检查"));
+    stcItem2_0->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    staticTestTable->setItem(2,0,stcItem2_0);
+    stcItem3_0->setText(tr("一致性检查"));
+    stcItem3_0->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    staticTestTable->setItem(3,0,stcItem3_0);
+
+    stcItem0_1->setCheckState(Qt::CheckState::Checked);
+    stcItem0_1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    staticTestTable->setItem(0,1,stcItem0_1);
+    stcItem1_1->setCheckState(Qt::CheckState::Checked);
+    stcItem1_1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    staticTestTable->setItem(1,1,stcItem1_1);
+    stcItem2_1->setCheckState(Qt::CheckState::Checked);
+    stcItem2_1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    staticTestTable->setItem(2,1,stcItem2_1);
+    stcItem3_1->setCheckState(Qt::CheckState::Checked);
+    stcItem3_1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    staticTestTable->setItem(3,1,stcItem3_1);
+
+    stcItem0_2->setCheckState(Qt::CheckState::Unchecked);
+    stcItem0_2->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    staticTestTable->setItem(0,2,stcItem0_2);
+    stcItem1_2->setCheckState(Qt::CheckState::Unchecked);
+    stcItem1_2->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    staticTestTable->setItem(1,2,stcItem1_2);
+    stcItem2_2->setCheckState(Qt::CheckState::Unchecked);
+    stcItem2_2->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    staticTestTable->setItem(2,2,stcItem2_2);
+    stcItem3_2->setCheckState(Qt::CheckState::Unchecked);
+    stcItem3_2->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    staticTestTable->setItem(3,2,stcItem3_2);
+
+    staticTestTable->setItem(0,3,stcItem0_3);
+    staticTestTable->setItem(1,3,stcItem1_3);
+    staticTestTable->setItem(2,3,stcItem2_3);
+    staticTestTable->setItem(3,3,stcItem3_3);
+
+    showTab->addTab(staticTestTable, tr("静态测试状态"));
+
 
     upLayout->addLayout(viewLayout);
     upLayout->addLayout(showLayout);
@@ -279,6 +447,144 @@ void MainWindow::createLayout()
     QWidget *Mwidget = new QWidget(this);
     Mwidget->setLayout(mainLayout);
     this->setCentralWidget(Mwidget);
+}
+
+void MainWindow::createTaskFileTree(TreeView *treeview)
+{
+    QStandardItemModel *model = new QStandardItemModel(treeview);
+    model->setHorizontalHeaderLabels(QStringList()<<QStringLiteral("名称"));
+
+    QStandardItem *itemStaticTool = new QStandardItem(QStringLiteral("静态工具"));
+    itemStaticTool->setIcon(QIcon(":/bg/icon_folder"));
+
+    QStandardItem *itemDynamicTool = new QStandardItem(QStringLiteral("动态工具"));
+    itemDynamicTool->setIcon(QIcon(":/bg/icon_folder"));
+
+    QStandardItem *itemDebugTool = new QStandardItem(QStringLiteral("调试工具"));
+    itemDebugTool->setIcon(QIcon(":/bg/icon_folder"));
+
+    model->appendRow(itemStaticTool);
+    model->appendRow(itemDynamicTool);
+    model->appendRow(itemDebugTool);
+
+    QStandardItem *check1_1 = new QStandardItem(QStringLiteral("规则检查"));
+    check1_1->setIcon(QIcon(":/bg/icon_checked"));
+    QStandardItem *check1_2 = new QStandardItem(QStringLiteral("跨时钟域检查"));
+    check1_2->setIcon(QIcon(":/bg/icon_checked"));
+    QStandardItem *check1_3 = new QStandardItem(QStringLiteral("静态时序分析"));
+    check1_3->setIcon(QIcon(":/bg/icon_wrong"));
+    QStandardItem *check1_4 = new QStandardItem(QStringLiteral("一致性检查"));
+    check1_4->setIcon(QIcon(":/bg/icon_unchecked"));
+
+    itemStaticTool->appendRow(check1_1);
+    itemStaticTool->appendRow(check1_2);
+    itemStaticTool->appendRow(check1_3);
+    itemStaticTool->appendRow(check1_4);
+
+    QStandardItem *check2_1 = new QStandardItem(QStringLiteral("测试平台创建"));
+    check2_1->setIcon(QIcon(":/bg/icon_checked"));
+    QStandardItem *check2_2 = new QStandardItem(QStringLiteral("测试用例创建"));
+    check2_2->setIcon(QIcon(":/bg/icon_checked"));
+    QStandardItem *check2_3 = new QStandardItem(QStringLiteral("功能仿真"));
+    check2_3->setIcon(QIcon(":/bg/icon_checked"));
+    QStandardItem *check2_4 = new QStandardItem(QStringLiteral("时序仿真"));
+    check2_4->setIcon(QIcon(":/bg/icon_wrong"));
+    QStandardItem *check2_3_1 = new QStandardItem(QStringLiteral("测试用例TC_xx"));
+    check2_3_1->setIcon(QIcon(":/bg/icon_file"));
+    QStandardItem *check2_4_1 = new QStandardItem(QStringLiteral("测试用例TC_xx"));
+    check2_4_1->setIcon(QIcon(":/bg/icon_file"));
+
+    itemDynamicTool->appendRow(check2_1);
+    itemDynamicTool->appendRow(check2_2);
+    itemDynamicTool->appendRow(check2_3);
+    itemDynamicTool->appendRow(check2_4);
+    check2_3->appendRow(check2_3_1);
+    check2_4->appendRow(check2_4_1);
+
+    QStandardItem *check3_1 = new QStandardItem(QStringLiteral("Verdi"));
+    check3_1->setIcon(QIcon(":/bg/icon_checked"));
+
+    itemDebugTool->appendRow(check3_1);
+
+    treeview->setModel(model);
+}
+
+void MainWindow::createReportFiletree(TreeView *treeview)
+{
+    QStandardItemModel *model = new QStandardItemModel(treeview);
+    model->setHorizontalHeaderLabels(QStringList()<<QStringLiteral("名称"));
+
+    QStandardItem *itemStaticTool = new QStandardItem(QStringLiteral("静态工具"));
+    itemStaticTool->setIcon(QIcon(":/bg/icon_folder"));
+
+    QStandardItem *itemDynamicTool = new QStandardItem(QStringLiteral("动态工具"));
+    itemDynamicTool->setIcon(QIcon(":/bg/icon_folder"));
+
+    QStandardItem *itemDebugTool = new QStandardItem(QStringLiteral("调试工具"));
+    itemDebugTool->setIcon(QIcon(":/bg/icon_folder"));
+
+    model->appendRow(itemStaticTool);
+    model->appendRow(itemDynamicTool);
+    model->appendRow(itemDebugTool);
+
+    QStandardItem *file1_1 = new QStandardItem(QStringLiteral("代码行数日志.log"));
+    file1_1->setIcon(QIcon(":/bg/icon_file"));
+    QStandardItem *file1_2 = new QStandardItem(QStringLiteral("规则检查日志.log"));
+    file1_2->setIcon(QIcon(":/bg/icon_file"));
+    QStandardItem *file1_3 = new QStandardItem(QStringLiteral("跨时钟域检查日志.log"));
+    file1_3->setIcon(QIcon(":/bg/icon_file"));
+    QStandardItem *file1_4 = new QStandardItem(QStringLiteral("静态时序分析日志.log"));
+    file1_4->setIcon(QIcon(":/bg/icon_file"));
+    QStandardItem *file1_5 = new QStandardItem(QStringLiteral("一致性检查日志.log"));
+    file1_5->setIcon(QIcon(":/bg/icon_file"));
+
+    itemStaticTool->appendRow(file1_1);
+    itemStaticTool->appendRow(file1_2);
+    itemStaticTool->appendRow(file1_3);
+    itemStaticTool->appendRow(file1_4);
+    itemStaticTool->appendRow(file1_5);
+
+    QStandardItem *itemDynamicSti = new QStandardItem(QStringLiteral("功能仿真"));
+    itemDynamicSti->setIcon(QIcon(":/bg/icon_folder"));
+    QStandardItem *itemTimeSti = new QStandardItem(QStringLiteral("时序仿真"));
+    itemTimeSti->setIcon(QIcon(":/bg/icon_folder"));
+
+    itemDynamicTool->appendRow(itemDynamicSti);
+    itemDynamicTool->appendRow(itemTimeSti);
+
+    QStandardItem *file2_1_1 = new QStandardItem(QStringLiteral("测试用例TC_xx日志.log"));
+    file2_1_1->setIcon(QIcon(":/bg/icon_file"));
+    QStandardItem *file2_2_1 = new QStandardItem(QStringLiteral("测试用例TC_xx日志.log"));
+    file2_2_1->setIcon(QIcon(":/bg/icon_file"));
+
+    itemDynamicSti->appendRow(file2_1_1);
+    itemTimeSti->appendRow(file2_2_1);
+
+    QStandardItem *verdi = new QStandardItem(QStringLiteral("Verdi"));
+    verdi->setIcon(QIcon(":/bg/icon_folder"));
+    QStandardItem *file3_1_1 = new QStandardItem(QStringLiteral("测试用例TC_xx日志.log"));
+    file3_1_1->setIcon(QIcon(":/bg/icon_file"));
+
+    itemDebugTool->appendRow(verdi);
+    verdi->appendRow(file3_1_1);
+
+    QStandardItem *filterInfo = new QStandardItem(QStringLiteral("过滤信息"));
+    QStandardItem *showError = new QStandardItem(QStringLiteral("显示error"));
+    showError->setCheckState(Qt::Checked);
+    showError->setCheckable(true);
+    QStandardItem *showWarning = new QStandardItem(QStringLiteral("显示warning"));
+    showWarning->setCheckState(Qt::Unchecked);
+    showWarning->setCheckable(true);
+    QStandardItem *showUserChar = new QStandardItem(QStringLiteral("显示用户定制字符"));
+    showUserChar->setCheckState(Qt::Checked);
+    showUserChar->setCheckable(true);
+
+    model->appendRow(filterInfo);
+    filterInfo->appendRow(showError);
+    filterInfo->appendRow(showWarning);
+    filterInfo->appendRow(showUserChar);
+
+    treeview->setModel(model);
 }
 
 void MainWindow::createFileTree(TreeView *treeview)
