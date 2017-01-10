@@ -1,6 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+//#define PROJECT 1
+//#define FILE 2
+//#define TC 3
+//#define STATIC 4
+//#define DYNAMIC 5
+
 #include <QMainWindow>
 #include <QMenu>
 #include <QMenuBar>
@@ -8,6 +14,9 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QLabel>
+#include <QTextEdit>
+#include <QTableWidget>
+#include <QHeaderView>
 #include "treeview.h"
 
 class MainWindow : public QMainWindow
@@ -24,6 +33,8 @@ private:
     void createAction();
 
     void createFileTree(TreeView *treeview);
+    void createReportFiletree(TreeView *treeview);
+    void createTaskFileTree(TreeView *treeview);
 
     QMenu *fileMenu;
     QAction *fileNew;
