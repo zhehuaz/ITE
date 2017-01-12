@@ -28,8 +28,6 @@ private:
     list<QWidget*> widgetList;
     list<QWidget*>::iterator widgetListIt;
     list<QWidget*>::iterator widgetListItLast;
-    NewProjectPathWidget *pathWidget;
-    NewProjectWelcomWidget *welcomWidget;
 private slots:
     void on_nextButton_clicked();
     void on_backButton_clicked();

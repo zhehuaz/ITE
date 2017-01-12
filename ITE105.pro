@@ -20,7 +20,10 @@ SOURCES += main.cpp\
     newprojectpathwidget.cpp \
     newprojectvcwidget.cpp \
     newprojectmemberwidget.cpp \
-    treeview.cpp
+    treeview.cpp \
+    settingsdialog.cpp \
+    settingsrunenvwidget.cpp \
+    settingstoolsenvwidget.cpp
 
 HEADERS  += logindialog.h \
     mainwindow.h \
@@ -29,7 +32,10 @@ HEADERS  += logindialog.h \
     newprojectpathwidget.h \
     newprojectvcwidget.h \
     newprojectmemberwidget.h \
-    treeview.h
+    treeview.h \
+    settingsdialog.h \
+    settingsrunenvwidget.h \
+    settingstoolsenvwidget.h
 
 FORMS    += logindialog.ui \
     mainwindow.ui \
@@ -37,7 +43,10 @@ FORMS    += logindialog.ui \
     newprojectwelcomwidget.ui \
     newprojectpathwidget.ui \
     newprojectvcwidget.ui \
-    newprojectmemberwidget.ui
+    newprojectmemberwidget.ui \
+    settingsdialog.ui \
+    settingsrunenvwidget.ui \
+    settingstoolsenvwidget.ui
 
 DISTFILES +=
 
