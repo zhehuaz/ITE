@@ -113,6 +113,7 @@ void MainWindow::createMenu()
 
     projectMenu = this->menuBar()->addMenu(tr("工程"));
     projectMenu->addAction(projectNew);
+    connect(projectNew, SIGNAL(triggered()),this,SLOT(newProject()));
     projectMenu->addAction(projectOpen);
     projectMenu->addAction(projectClose);
     projectMenu->addAction(projectSave);
@@ -123,6 +124,7 @@ void MainWindow::createMenu()
     projectMenu->addAction(versionControl);
     projectMenu->addSeparator();
     projectMenu->addAction(projectProperty);
+    connect(projectProperty, SIGNAL(triggered()),this,SLOT(projectSettings()));
 
     windowMenu = this->menuBar()->addMenu(tr("窗口"));
     windowMenu->addAction(windowClose);
@@ -666,4 +668,16 @@ void MainWindow::createFileTree(TreeView *treeview)
     treeview->setModel(model);
     //treeview->iterateOverItems();
     //treeview->setEditTriggers(QAbstractItemView::NoEditTriggers);
+}
+
+void MainWindow::newProject()
+{
+    NewProjectDialog *newProjectDialog = new NewProjectDialog;
+    newProjectDialog->show();
+}
+
+void MainWindow::projectSettings()
+{
+    SettingsDialog *settingsDialog = new SettingsDialog;
+    settingsDialog->show();
 }

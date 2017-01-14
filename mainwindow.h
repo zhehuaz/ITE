@@ -17,6 +17,8 @@
 #include <QTextEdit>
 #include <QTableWidget>
 #include <QHeaderView>
+#include "newprojectdialog.h"
+#include "settingsdialog.h"
 #include "treeview.h"
 
 class MainWindow : public QMainWindow
@@ -26,6 +28,10 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+public slots:
+    void newProject();
+    void projectSettings();
 
 private:
     void createLayout();
