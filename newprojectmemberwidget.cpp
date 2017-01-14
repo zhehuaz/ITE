@@ -35,6 +35,7 @@ void NewProjectMemberWidget::on_selectButton_clicked()
     QList<QListWidgetItem*> selectedList = ui->candiList->selectedItems();
     for (QList<QListWidgetItem*>::iterator it = selectedList.begin(); it != selectedList.end(); it ++)
     {
+        ui->candiList->takeItem(ui->candiList->row(*it));
         ui->selectList->addItem((*it)->text());
     }
 }
