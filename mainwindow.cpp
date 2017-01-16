@@ -268,8 +268,10 @@ void MainWindow::createLayout()
     taskWidget->setLayout(taskTreeLayout);
     taskTreeLayout->addWidget(taskTreeView);
 
+    QWidget *sysCns = new QWidget;
     QWidget *sysCnsErrWidget = new QWidget;
     QWidget *sysCnsWrnWidget = new QWidget;
+    QWidget *tstCns = new QWidget;
     QWidget *tstCnsErrWidget = new QWidget;
     QWidget *tstCnsWrnWidget = new QWidget;
 
@@ -282,8 +284,10 @@ void MainWindow::createLayout()
                            " ==== 运行：成功1个，失败0个 ====";
     sysCnsTxt->setPlainText(sysCnsString);
 
+    msgTab->addTab(sysCns, tr("系统控制台"));
     msgTab->addTab(sysCnsTxt, tr("系统控制台错误"));
     msgTab->addTab(sysCnsWrnWidget, tr("系统控制台警告"));
+    msgTab->addTab(tstCns, tr("测试控制台"));
     msgTab->addTab(tstCnsErrWidget, tr("测试控制台错误"));
     msgTab->addTab(tstCnsWrnWidget, tr("测试控制台警告"));
     msgTab->setFixedHeight(150);
@@ -440,6 +444,92 @@ void MainWindow::createLayout()
 
     showTab->addTab(staticTestTable, tr("静态测试状态"));
 
+    QTableWidget *dynTestTable = new QTableWidget(5,4);
+    dynTestTable->horizontalHeader()->setStretchLastSection(true);
+    dynTestTable->setSelectionBehavior(QAbstractItemView::SelectItems);
+    dynTestTable->setEditTriggers(QAbstractItemView::DoubleClicked);
+
+    QTableWidgetItem *dynItem0_0 = new QTableWidgetItem;
+    QTableWidgetItem *dynItem0_1 = new QTableWidgetItem;
+    QTableWidgetItem *dynItem0_2 = new QTableWidgetItem;
+    QTableWidgetItem *dynItem0_3 = new QTableWidgetItem;
+    QTableWidgetItem *dynItem1_0 = new QTableWidgetItem;
+    QTableWidgetItem *dynItem1_1 = new QTableWidgetItem;
+    QTableWidgetItem *dynItem1_2 = new QTableWidgetItem;
+    QTableWidgetItem *dynItem1_3 = new QTableWidgetItem;
+    QTableWidgetItem *dynItem2_0 = new QTableWidgetItem;
+    QTableWidgetItem *dynItem2_1 = new QTableWidgetItem;
+    QTableWidgetItem *dynItem2_2 = new QTableWidgetItem;
+    QTableWidgetItem *dynItem2_3 = new QTableWidgetItem;
+    QTableWidgetItem *dynItem3_0 = new QTableWidgetItem;
+    QTableWidgetItem *dynItem3_1 = new QTableWidgetItem;
+    QTableWidgetItem *dynItem3_2 = new QTableWidgetItem;
+    QTableWidgetItem *dynItem3_3 = new QTableWidgetItem;
+    QTableWidgetItem *dynItem4_0 = new QTableWidgetItem;
+    QTableWidgetItem *dynItem4_1 = new QTableWidgetItem;
+    QTableWidgetItem *dynItem4_2 = new QTableWidgetItem;
+    QTableWidgetItem *dynItem4_3 = new QTableWidgetItem;
+
+    dynItem0_0->setText(tr("TC_Uart_001"));
+    dynItem0_0->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    dynTestTable->setItem(0,0,dynItem0_0);
+    dynItem1_0->setText(tr("TC_Uart_002"));
+    dynItem1_0->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    dynTestTable->setItem(1,0,dynItem1_0);
+    dynItem2_0->setText(tr("TC_Uart_XXX"));
+    dynItem2_0->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    dynTestTable->setItem(2,0,dynItem2_0);
+    dynItem3_0->setText(tr("TC_I2C_001"));
+    dynItem3_0->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    dynTestTable->setItem(3,0,dynItem3_0);
+    dynItem4_0->setText(tr("TC_I2C_002"));
+    dynItem4_0->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    dynTestTable->setItem(4,0,dynItem4_0);
+
+    dynItem0_1->setCheckState(Qt::CheckState::Checked);
+    dynItem0_1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    dynTestTable->setItem(0,1,dynItem0_1);
+    dynItem1_1->setCheckState(Qt::CheckState::Checked);
+    dynItem1_1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    dynTestTable->setItem(1,1,dynItem1_1);
+    dynItem2_1->setCheckState(Qt::CheckState::Checked);
+    dynItem2_1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    dynTestTable->setItem(2,1,dynItem2_1);
+    dynItem3_1->setCheckState(Qt::CheckState::Checked);
+    dynItem3_1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    dynTestTable->setItem(3,1,dynItem3_1);
+    dynItem4_1->setCheckState(Qt::CheckState::Checked);
+    dynItem4_1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    dynTestTable->setItem(4,1,dynItem4_1);
+
+    dynItem0_2->setCheckState(Qt::CheckState::Checked);
+    dynItem0_2->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    dynTestTable->setItem(0,2,dynItem0_2);
+    dynItem1_2->setCheckState(Qt::CheckState::Checked);
+    dynItem1_2->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    dynTestTable->setItem(1,2,dynItem1_2);
+    dynItem2_2->setCheckState(Qt::CheckState::Checked);
+    dynItem2_2->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    dynTestTable->setItem(2,2,dynItem2_2);
+    dynItem3_2->setCheckState(Qt::CheckState::Checked);
+    dynItem3_2->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    dynTestTable->setItem(3,2,dynItem3_2);
+    dynItem4_2->setCheckState(Qt::CheckState::Checked);
+    dynItem4_2->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    dynTestTable->setItem(4,2,dynItem4_2);
+
+    dynTestTable->setItem(0,3,dynItem0_3);
+    dynTestTable->setItem(1,3,dynItem1_3);
+    dynTestTable->setItem(2,3,dynItem2_3);
+    dynTestTable->setItem(3,3,dynItem3_3);
+    dynTestTable->setItem(4,3,dynItem4_3);
+
+    QStringList title3;
+    title3<<"测试项"<<"执行结果"<<"测试通过"<<"备注";
+    dynTestTable->setHorizontalHeaderLabels(title3);
+    dynTestTable->setVerticalHeaderLabels(title);
+
+    showTab->addTab(dynTestTable, tr("动态测试状态"));
 
     upLayout->addLayout(viewLayout);
     upLayout->addLayout(showLayout);
