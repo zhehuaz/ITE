@@ -2,7 +2,7 @@
 #include "ui_newprojectwelcomwidget.h"
 
 NewProjectWelcomWidget::NewProjectWelcomWidget(QWidget *parent) :
-    QWidget(parent),
+    NewProjectWidget(parent),
     ui(new Ui::NewProjectWelcomWidget)
 {
     ui->setupUi(this);

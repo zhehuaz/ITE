@@ -4,7 +4,7 @@
 #include <QFileDialog>
 
 NewProjectPathWidget::NewProjectPathWidget(QWidget *parent) :
-    QWidget(parent),
+    NewProjectWidget(parent),
     ui(new Ui::NewProjectPathWidget)
 {
     ui->setupUi(this);
@@ -20,4 +20,9 @@ void NewProjectPathWidget::on_selectButton_clicked()
     QString path = QFileDialog::getExistingDirectory();
     ui->textEdit->setText(path);
     ((NewProjectDialog*)this->parent())->projectPath = path;
+}
+
+void NewProjectPathWidget::onNext()
+{
+    ((NewProjectDialog*)this->parent())->projectName = ui->nameEdit->toPlainText();
 }

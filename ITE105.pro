@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     treeview.cpp \
     settingsdialog.cpp \
     settingsrunenvwidget.cpp \
-    settingstoolsenvwidget.cpp
+    settingstoolsenvwidget.cpp \
+    newprojectwidget.cpp
 
 HEADERS  += logindialog.h \
     mainwindow.h \
@@ -35,7 +36,8 @@ HEADERS  += logindialog.h \
     treeview.h \
     settingsdialog.h \
     settingsrunenvwidget.h \
-    settingstoolsenvwidget.h
+    settingstoolsenvwidget.h \
+    newprojectwidget.h
 
 FORMS    += logindialog.ui \
     mainwindow.ui \

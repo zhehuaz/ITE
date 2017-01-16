@@ -1,7 +1,8 @@
 #include "mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent)
+MainWindow::MainWindow(QWidget *parent, QString pjName) :
+    QMainWindow(parent),
+    projectName(pjName)
 {
     setWindowTitle(tr("软件产品质量保证应用平台"));
     setGeometry(100, 100, 800, 600);
@@ -593,7 +594,7 @@ void MainWindow::createFileTree(TreeView *treeview)
 {
     QStandardItemModel *model = new QStandardItemModel(treeview);
     model->setHorizontalHeaderLabels(QStringList()<<QStringLiteral("名称"));
-    QStandardItem *itemProject = new QStandardItem(QStringLiteral("项目"));
+    QStandardItem *itemProject = new QStandardItem(projectName);
     itemProject->setIcon(QIcon(":/bg/icon_project"));
     model->appendRow(itemProject);
     //model->setItem(model->indexFromItem(itemProject).row(), 1, new QStandardItem(QStringLiteral("项目信息说明")));

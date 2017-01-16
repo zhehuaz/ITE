@@ -1,14 +1,14 @@
 #ifndef NEWPROJECTMEMBERWIDGET_H
 #define NEWPROJECTMEMBERWIDGET_H
 
-#include <QWidget>
+#include "newprojectwidget.h"
 #include <QList>
 
 namespace Ui {
 class NewProjectMemberWidget;
 }
 
-class NewProjectMemberWidget : public QWidget
+class NewProjectMemberWidget : public NewProjectWidget
 {
     Q_OBJECT
 

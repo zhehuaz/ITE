@@ -1,13 +1,13 @@
 #ifndef NEWPROJECTVCWIDGET_H
 #define NEWPROJECTVCWIDGET_H
 
-#include <QWidget>
+#include "newprojectwidget.h"
 
 namespace Ui {
 class NewProjectVCWidget;
 }
 
-class NewProjectVCWidget : public QWidget
+class NewProjectVCWidget : public NewProjectWidget
 {
     Q_OBJECT
 

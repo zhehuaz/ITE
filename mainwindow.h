@@ -26,8 +26,9 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = 0, QString pjName = "项目");
     ~MainWindow();
+    QString projectName;
 
 public slots:
     void newProject();
