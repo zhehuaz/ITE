@@ -22,12 +22,14 @@ class NewProjectDialog : public QDialog
 public:
     explicit NewProjectDialog(QWidget *parent = 0);
     ~NewProjectDialog();
+    QString projectPath;
 
 private:
     Ui::NewProjectDialog *ui;
     list<QWidget*> widgetList;
     list<QWidget*>::iterator widgetListIt;
     list<QWidget*>::iterator widgetListItLast;
+    void finishCreating();
 private slots:
     void on_nextButton_clicked();
     void on_backButton_clicked();

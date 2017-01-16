@@ -2,6 +2,7 @@
 #define NEWPROJECTPATHWIDGET_H
 
 #include <QWidget>
+#include <newprojectdialog.h>
 
 namespace Ui {
 class NewProjectPathWidget;

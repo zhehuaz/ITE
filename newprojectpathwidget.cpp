@@ -17,6 +17,7 @@ NewProjectPathWidget::~NewProjectPathWidget()
 
 void NewProjectPathWidget::on_selectButton_clicked()
 {
-    QString path = QFileDialog::getOpenFileName();
+    QString path = QFileDialog::getExistingDirectory();
     ui->textEdit->setText(path);
+    ((NewProjectDialog*)this->parent())->projectPath = path;
 }

@@ -1,5 +1,7 @@
 #include "newprojectdialog.h"
 #include "ui_newprojectdialog.h"
+#include <QDir>
+#include <mainwindow.h>
 
 NewProjectDialog::NewProjectDialog(QWidget *parent) :
     QDialog(parent),
@@ -35,6 +37,25 @@ NewProjectDialog::~NewProjectDialog()
     }
 }
 
+void NewProjectDialog::finishCreating()
+{
+    if (projectPath.length() > 0)
+    {
+        QDir dir(projectPath);
+        if (!dir.exists())
+        {
+            dir.mkpath(".");
+        }
+        dir.mkpath("./hello");
+        dir.mkpath("./test");
+        dir.mkpath("./yes");
+        QFile file(dir.filePath("new.prj"));
+        file.open(QFile::WriteOnly);
+        MainWindow *mainwindow = new MainWindow();
+        mainwindow->show();
+    }
+}
+
 void NewProjectDialog::on_nextButton_clicked()
 {
     (*widgetListIt)->setVisible(false);
@@ -44,6 +65,7 @@ void NewProjectDialog::on_nextButton_clicked()
     {
         // click 'Done'
         this->accept();
+        this->finishCreating();
     }
     else
     {
@@ -53,6 +75,14 @@ void NewProjectDialog::on_nextButton_clicked()
         {
             ui->backButton->setVisible(true);
             ui->nextButton->setText("Done");
+            if (this->projectPath.length() == 0)
+            {
+                ui->nextButton->setEnabled(false);
+            }
+            else
+            {
+                ui->nextButton->setEnabled(true);
+            }
         }
         else
         {
@@ -64,6 +94,7 @@ void NewProjectDialog::on_nextButton_clicked()
 void NewProjectDialog::on_backButton_clicked()
 {
     ui->nextButton->setText("Next");
+    ui->nextButton->setEnabled(true);
     (*widgetListIt)->setVisible(false);
     widgetListIt --;
     (*widgetListIt)->setVisible(true);
