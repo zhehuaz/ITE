@@ -62,6 +62,29 @@
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt; font-weight:600;&quot;&gt;Path&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
+  <widget class="QTextEdit" name="nameEdit">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>150</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>160</y>
+     <width>91</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Project Name:</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

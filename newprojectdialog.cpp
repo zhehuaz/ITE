@@ -41,7 +41,7 @@ void NewProjectDialog::finishCreating()
 {
     if (projectPath.length() > 0)
     {
-        QDir dir(projectPath);
+        QDir dir(projectPath + "/" + projectName);
         if (!dir.exists())
         {
             dir.mkpath(".");
@@ -51,7 +51,7 @@ void NewProjectDialog::finishCreating()
         dir.mkpath("./yes");
         QFile file(dir.filePath("new.prj"));
         file.open(QFile::WriteOnly);
-        MainWindow *mainwindow = new MainWindow();
+        MainWindow *mainwindow = new MainWindow(0, projectName);
         mainwindow->show();
     }
 }
@@ -59,6 +59,7 @@ void NewProjectDialog::finishCreating()
 void NewProjectDialog::on_nextButton_clicked()
 {
     (*widgetListIt)->setVisible(false);
+    (*widgetListIt)->onNext();
     widgetListIt ++;
 
     if (widgetListIt == widgetList.end())
@@ -75,7 +76,7 @@ void NewProjectDialog::on_nextButton_clicked()
         {
             ui->backButton->setVisible(true);
             ui->nextButton->setText("Done");
-            if (this->projectPath.length() == 0)
+            if (this->projectPath.length() == 0 || this->projectPath.length() == 0)
             {
                 ui->nextButton->setEnabled(false);
             }

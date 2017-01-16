@@ -2,7 +2,7 @@
 #include "ui_newprojectmemberwidget.h"
 
 NewProjectMemberWidget::NewProjectMemberWidget(QWidget *parent) :
-    QWidget(parent),
+    NewProjectWidget(parent),
     ui(new Ui::NewProjectMemberWidget)
 {
     ui->setupUi(this);
@@ -46,6 +46,6 @@ void NewProjectMemberWidget::on_pushButton_clicked()
     for (QList<QListWidgetItem*>::iterator it = selectedList.begin(); it != selectedList.end(); it ++)
     {
         QListWidgetItem* item = ui->selectList->takeItem(ui->selectList->row(*it));
-        delete item;
+        ui->candiList->addItem(item->text());
     }
 }

@@ -2,7 +2,7 @@
 #include "ui_newprojectvcwidget.h"
 
 NewProjectVCWidget::NewProjectVCWidget(QWidget *parent) :
-    QWidget(parent),
+    NewProjectWidget(parent),
     ui(new Ui::NewProjectVCWidget)
 {
     ui->setupUi(this);

@@ -1,13 +1,13 @@
 #ifndef NEWPROJECTWELCOMWIDGET_H
 #define NEWPROJECTWELCOMWIDGET_H
 
-#include <QWidget>
+#include "newprojectwidget.h"
 
 namespace Ui {
 class NewProjectWelcomWidget;
 }
 
-class NewProjectWelcomWidget : public QWidget
+class NewProjectWelcomWidget : public NewProjectWidget
 {
     Q_OBJECT
 
